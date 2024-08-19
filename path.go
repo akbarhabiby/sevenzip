@@ -1,7 +1,6 @@
 package sevenzip
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -54,9 +53,6 @@ func findPath() (path string, err error) {
 		return
 	}
 	path, err = lookPath(exe)
-	if errors.Is(err, exec.ErrDot) {
-		return
-	}
 	if err == nil && path != "" {
 		SetPath(path)
 		return
@@ -66,9 +62,6 @@ func findPath() (path string, err error) {
 		return "", fmt.Errorf("%s not found", exe)
 	}
 	path, err = lookPath(filepath.Join(dir, exe))
-	if errors.Is(err, exec.ErrDot) {
-		return
-	}
 	if err == nil && path != "" {
 		SetPath(path)
 		return

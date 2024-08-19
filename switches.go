@@ -70,7 +70,7 @@ func swV2ToArgs(sw *Switches) []string {
 		}
 
 		switch value.Kind() {
-		case reflect.Pointer:
+		case reflect.Ptr:
 			if !value.IsNil() {
 				switch value.Elem().Kind() {
 				case reflect.Bool:
